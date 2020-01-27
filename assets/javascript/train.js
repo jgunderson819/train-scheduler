@@ -10,3 +10,6 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+   // Create a variable to reference the database
+   var database = firebase.database();

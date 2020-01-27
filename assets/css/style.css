@@ -16,12 +16,13 @@ text-align: center;
 #trainSchedule {
 background-color: teal;
 color: white;
-margin: 4px;
+margin: 10px;
+padding-left: 10px;
 
 }
 #addTrain {
 background-color: teal;
 color: white;
-margin: 4px;
-
+margin: 10px;
+padding-left: 10px;
 }
