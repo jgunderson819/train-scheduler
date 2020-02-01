@@ -1,7 +1,7 @@
 
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: ,
+    apiKey: "some api",
     authDomain: "train-9aa81.firebaseapp.com",
     databaseURL: "https://train-9aa81.firebaseio.com",
     projectId: "train-9aa81",
@@ -13,9 +13,38 @@
   firebase.initializeApp(firebaseConfig);
 
   var db = firebase.database();
+    // set variables for train conversions
+    var tFrequency = trainFreq;
+
+    // 
+    var firstTime = trainTime;
+
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
+
+    // Time apart (remainder)
+    var tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
+
+    // Minute Until Train
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
    // 2. Button for adding Train
-$("#btn-primary").on("click", function(event) {
+$("#newTrain").on("click", function(event) {
   event.preventDefault();
 
   // Grabs user input
@@ -51,7 +80,7 @@ $("#btn-primary").on("click", function(event) {
 });
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
-database.ref().on("child_added", function(childSnapshot) {
+db.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val());
 
   // Store everything into a variable.
