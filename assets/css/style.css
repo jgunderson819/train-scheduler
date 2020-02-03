@@ -7,15 +7,15 @@ font-size: 20px;
 
 }
 
-#trainTime {
-background-color: burlywood;
+#train {
+ background-color: burlywood;
 font-family: Georgia, 'Times New Roman', Times, serif;
-color: white;
-text-align: center;
+ color: white; 
+ text-align: center; 
 }
 #trainSchedule {
-background-color: teal;
-color: white;
+background-color: aquamarine;
+color:black;
 margin: 10px;
 padding-left: 10px;
 
